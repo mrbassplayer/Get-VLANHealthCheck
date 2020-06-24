@@ -145,6 +145,10 @@ $grandtotal = @()
               ($_.TrunkedVLAN | ForEach-Object {
                       if ($_.Start -eq $_.End) {
                           "{0}" -f $_.Start
+                      }elseif ($($_.Start + 1) -eq $_.End) {
+           
+                         ($(([Int]$_.Start)..([Int]$_.End))) -join ','
+           
                       }
                       else {
                           "{0}-{1}" -f $_.Start, $_.End
@@ -155,6 +159,10 @@ $grandtotal = @()
               ($_.UnTrunkedVLAN | ForEach-Object {
                       if ($_.Start -eq $_.End) {
                           "{0}" -f $_.Start
+                      }elseif ($($_.Start + 1) -eq $_.End) {
+           
+                         ($(([Int]$_.Start)..([Int]$_.End))) -join ','
+           
                       }
                       else {
                           "{0}-{1}" -f $_.Start, $_.End
@@ -172,28 +180,24 @@ $grandtotal = @()
            
                    "{0}" -f $_.Start
            
-                } elseif ($($_.Start + 1) -eq $_.End) {
+                } else {
            
-                     ($(([Int]$_.Start)..([Int]$_.End))) -join ','
+                   ($(([Int]$_.Start)..([Int]$_.End))) -join ','
            
-                  } else {
-           
-                       "{0}-{1}" -f $_.Start, $_.End
-           
-                    }
+                  }
              }) -join ','
           }
           }, @{N = 'UnTrunkedVLAN'; E = {
               ($_.UnTrunkedVLAN | ForEach-Object {
-                      if ($_.Start -eq $_.End) {
+                 if ($_.Start -eq $_.End) {
            
-                          "{0}" -f $_.Start
+                    "{0}" -f $_.Start
            
-                      } else {
+                 } else {
            
-                          "{0}-{1}" -f $_.Start, $_.End
+                    ($(([Int]$_.Start)..([Int]$_.End))) -join ','
            
-                      }
+                   }
               }) -join ','
              }  
              }

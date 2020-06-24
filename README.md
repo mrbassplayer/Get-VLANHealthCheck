@@ -16,12 +16,10 @@ However, the Uplinks have common elements across both tables.
 
 
 Credit where credit is due.
-
 https://kb.vmware.com/s/article/1007069
 The initial script just pulled the VLAN information from the CDP. But I found that "observed traffic" wasn't reliable enough over time. VLANs would disappear. However it was useful in getting the switch and port information.
 
 https://www.vnugglets.com/2014/07/get-vmhost-fc-hba-wwn-info-most-quickly.html
-
 Then I happened across this post about HBA WWNs a year or so later.
 This script was bazingly fast. I rewrote how my script gathered hosts' information to follow the method employed here. Sure enough it chopped down the runtime.
 

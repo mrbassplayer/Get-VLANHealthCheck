@@ -25,6 +25,6 @@ https://www.vnugglets.com/2014/07/get-vmhost-fc-hba-wwn-info-most-quickly.html
 Then I happened across this post about HBA WWNs a year or so later.
 This script was bazingly fast. I rewrote how my script gathered hosts' information to follow the method employed here. Sure enough it chopped down the runtime.
 
-I had one spot which was still taking forever to process. Collecting Uplinks. So I reached out to Matt Bowen, the author of vNugglets, on vmwarecode.slack.com and asked him for help. He worked up an alternative which was 10x faster.
+I had one spot which was still taking forever to process. Collecting Uplinks. So I reached out to Matt Boren, the author of vNugglets, on vmwarecode.slack.com and asked him for help. He worked up an alternative which was 10x faster.
 
 This script will get the job done but I'm sure could use more refinement. 

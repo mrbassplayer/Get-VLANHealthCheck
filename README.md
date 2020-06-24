@@ -9,8 +9,10 @@ This script is an attempt to provide that functionality.
 The script performs three steps.
 1. Collect the VMhost names, vmnics, Nic speed, Nic MAC address, SwitchID, and PortID.
 2. Collect the VLAN HealthCheck results.
+
 Now these two tables of data are rather useless because there is no common element between them.
 However, the Uplinks have common elements across both tables.
+
 3. Collect Uplinks
 4. Merge data together.
 

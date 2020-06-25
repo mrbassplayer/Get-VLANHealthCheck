@@ -57,8 +57,9 @@ function Get-VLANHealthCheck {
             Gets all hosts in 'Cluster1' and shows results for all vmnics connected to 'vDS-SiteA-M1' and shows the results in "Comma Dash" format.
     
     .NOTES
-            You need to have PowerCLI installed.
-            You need to be connected to a vCenter.
+            PowerCLI must be installed.
+            Must be connected to a vCenter.
+            VLAN HealthCheck must be enabled. Networking >> Select VDSwitch >> Configure >> HealthCheck >> Edit >> VLAN and MTU : Enable
     
     #>
     [CmdletBinding()]param(

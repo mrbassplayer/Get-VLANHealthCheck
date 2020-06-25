@@ -22,12 +22,12 @@ function Get-VLANHealthCheck {
             
     .EXAMPLE 
     Get-VLANHealthCheck -ClusterName_str Cluster1 -vdSwitchName_str vDS-SiteA-M1
-    Host                PNic   Speed MAC               DeviceID        PortID  vdSwitch     UplinkPortKey UnTrunkedVLAN    TrunkedVLAN
-    ----                ----   ----- ---               --------        ------  --------     ------------- -------------    -----------
-    myHost2.contoso.com vmnic4 10000 00:00:00:00:00:00 sw1.contoso.com Eth1/9  vDS-SiteA-M1 96            62,63,64         58,59,60,61,226,227,456,942,949
-    myHost2.contoso.com vmnic5 10000 00:00:00:00:00:00 sw2.contoso.com Eth1/10 vDS-SiteA-M1 97                             58,59,60,61,62,63,64,226,227,456,942,949
-    myHost2.contoso.com vmnic6 10000 00:00:00:00:00:00 sw1.contoso.com Eth1/10 vDS-SiteA-M1 98            62,63,64         58,59,60,61,226,227,456,942,949
-    myHost2.contoso.com vmnic7 10000 00:00:00:00:00:00 sw2.contoso.com Eth1/9  vDS-SiteA-M1 99                             58,59,60,61,62,63,64,226-227,456,942,949
+            Host                PNic   Speed MAC               DeviceID        PortID  vdSwitch     UplinkPortKey UnTrunkedVLAN    TrunkedVLAN
+            ----                ----   ----- ---               --------        ------  --------     ------------- -------------    -----------
+            myHost2.contoso.com vmnic4 10000 00:00:00:00:00:00 sw1.contoso.com Eth1/9  vDS-SiteA-M1 96            62,63,64         58,59,60,61,226,227,456,942,949
+            myHost2.contoso.com vmnic5 10000 00:00:00:00:00:00 sw2.contoso.com Eth1/10 vDS-SiteA-M1 97                             58,59,60,61,62,63,64,226,227,456,942,949
+            myHost2.contoso.com vmnic6 10000 00:00:00:00:00:00 sw1.contoso.com Eth1/10 vDS-SiteA-M1 98            62,63,64         58,59,60,61,226,227,456,942,949
+            myHost2.contoso.com vmnic7 10000 00:00:00:00:00:00 sw2.contoso.com Eth1/9  vDS-SiteA-M1 99                             58,59,60,61,62,63,64,226-227,456,942,949
             myHost1.contoso.com vmnic4 10000 00:00:00:00:00:00 sw1.contoso.com Eth1/8  vDS-SiteA-M1 103           62,63,64         58,59,60,61,226,227,456,942,949
             myHost1.contoso.com vmnic5 10000 00:00:00:00:00:00 sw2.contoso.com Eth1/8  vDS-SiteA-M1 104                            58,59,60,61,62,63,64,226,227,456,942,949
             myHost1.contoso.com vmnic6 10000 00:00:00:00:00:00 sw2.contoso.com Eth1/7  vDS-SiteA-M1 105                            58,59,60,61,62,63,64,226,227,456,942,949

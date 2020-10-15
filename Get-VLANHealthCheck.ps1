@@ -139,69 +139,54 @@ function Get-VLANHealthCheck {
     # Collect the VLANs and format them in either Comman Only or Comman Dash format.  
     $hshGetViewNetworkParams["Filter"] = @{"Name" = "$vdSwitchName_str" }
     $vds = get-view @hshGetViewNetworkParams
-    if ($CommaDash) {
-        $TrunkedVLANInfos = $vds.Runtime.HostMemberRuntime.HealthCheckResult | Where-Object { $_ -is [VMware.Vim.VMwareDVSVlanHealthCheckResult] } |
-        Select-Object @{N = 'vdSwitch'; E = { $vds.Name } },
-        UplinkPortKey,
-        @{N = 'TrunkedVLAN'; E = {
+    
+    if($CommaDash) {
+          $TrunkedVLANInfos = $vds.Runtime.HostMemberRuntime.HealthCheckResult | Where-Object {$_ -is [VMware.Vim.VMwareDVSVlanHealthCheckResult]} |
+            Select-Object @{N = 'vdSwitch'; E = {$vds.Name}},
+            UplinkPortKey,
+            @{N = 'TrunkedVLAN'; E = {
                 ($_.TrunkedVLAN | ForEach-Object {
-                        if ($_.Start -eq $_.End) {
-                            "{0}" -f $_.Start
-                        }
-                        else {
-                            "{0}-{1}" -f $_.Start, $_.End
-                        }
-                    }) -join ','
+                    if ($_.Start -eq $_.End) {
+                        "{0}" -f $_.Start
+                    } elseif ($($_.Start + 1) -eq $_.End) {
+                        ($(([Int]$_.Start)..([Int]$_.End))) -join ','
+                    } else {
+                        "{0}-{1}" -f $_.Start, $_.End
+                    }
+               }) -join ','
             }
-        }, @{N = 'UnTrunkedVLAN'; E = {
+            }, @{N = 'UnTrunkedVLAN'; E = {
                 ($_.UnTrunkedVLAN | ForEach-Object {
-                        if ($_.Start -eq $_.End) {
-                            "{0}" -f $_.Start
-                        }
-                        else {
-                            "{0}-{1}" -f $_.Start, $_.End
-                        }
-                    }) -join ','
+                    if ($_.Start -eq $_.End) {
+                        "{0}" -f $_.Start
+                    } else {
+                        "{0}-{1}" -f $_.Start, $_.End
+                    }
+                }) -join ','
             }
         }
-    }
-    else {
-        $TrunkedVLANInfos = $vds.Runtime.HostMemberRuntime.HealthCheckResult | Where-Object { $_ -is [VMware.Vim.VMwareDVSVlanHealthCheckResult] } |
-        Select-Object @{N = 'vdSwitch'; E = { $vds.Name } },
-        UplinkPortKey,
-        @{N = 'TrunkedVLAN'; E = {
+    } else {  
+        $TrunkedVLANInfos = $vds.Runtime.HostMemberRuntime.HealthCheckResult | Where-Object {$_ -is [VMware.Vim.VMwareDVSVlanHealthCheckResult]} |
+            Select-Object @{N = 'vdSwitch'; E = {$vds.Name}},
+            UplinkPortKey,
+            @{N = 'TrunkedVLAN'; E = {
                 ($_.TrunkedVLAN | ForEach-Object {
-                        if ($_.Start -eq $_.End) {
-                         
-                            "{0}" -f $_.Start
-                         
-                        }
-                        elseif ($($_.Start + 1) -eq $_.End) {
-                         
-                            ($(([Int]$_.Start)..([Int]$_.End))) -join ','
-                         
-                        }
-                        else {
-                         
-                            "{0}-{1}" -f $_.Start, $_.End
-                         
-                        }
-                    }) -join ','
+                    if ($_.Start -eq $_.End) {
+                        "{0}" -f $_.Start
+                    } else {
+                        ($(([Int]$_.Start)..([Int]$_.End))) -join ','
+                    }
+                }) -join ','
             }
-        }, @{N = 'UnTrunkedVLAN'; E = {
+            }, @{N = 'UnTrunkedVLAN'; E = {
                 ($_.UnTrunkedVLAN | ForEach-Object {
-                        if ($_.Start -eq $_.End) {
-                         
-                            "{0}" -f $_.Start
-                         
-                        }
-                        else {
-                         
-                            "{0}-{1}" -f $_.Start, $_.End
-                         
-                        }
-                    }) -join ','
-            }  
+                    if ($_.Start -eq $_.End) {
+                        "{0}" -f $_.Start
+                    } else {
+                        ($(([Int]$_.Start)..([Int]$_.End))) -join ','
+                    }
+                }) -join ','
+            }
         }
     }
     # Collect Uplinks

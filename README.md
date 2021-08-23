@@ -6,7 +6,7 @@ There is also no way to dump out that data, that I could find.
 
 This script is an attempt to provide that functionality.
 
-The script performs three steps.
+The script performs these steps.
 1. Collect the VMhost names, vmnics, Nic speed, Nic MAC address, SwitchID, and PortID.
 2. Collect the VLAN HealthCheck results.
 

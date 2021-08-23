@@ -1,5 +1,5 @@
 # Get-VLANHealthCheck
-Exports the results of the vCenters VLAN Health Check.
+Exports the results of the vCenter's VLAN Health Check.
 
 If you work with a lot of VLANs, you should find that the HTML5 vCenter Health Check really starts to be come unusable.
 There is also no way to dump out that data, that I could find.

@@ -19,7 +19,7 @@ However, the Uplinks have common elements across both tables.
 
 Credit where credit is due.
 https://kb.vmware.com/s/article/1007069
-The initial script just pulled the VLAN information from the CDP. But I found that "observed traffic" wasn't reliable enough over time. VLANs would disappear. However it was useful in getting the switch and port information.
+The initial script just pulled the VLAN information from the 'Discovery Protocol', but I found that "observed traffic" wasn't reliable enough over time. VLANs would disappear. However it was useful in getting the switch and port information.
 
 Luc Dekens' code here https://communities.vmware.com/message/2643890#2643890 helped me figure out how to parse the Trunked and UnTrunked VLANs.
 

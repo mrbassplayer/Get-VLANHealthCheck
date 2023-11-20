@@ -113,6 +113,17 @@ function Get-VLANHealthCheck {
                                 
                 $NetworkInfo.Host = $viewhost.Name  
                 $NetworkInfo.PNic = $Hint.Device  
+                ## Adds resiliance to script to accommodate the  vDSwitch's Discovery protocol being set to CDP or LLDP.
+                if ($Hint.connectedSwitchPort.DevId -ne $null) {
+                    ## CDP
+                    $NetworkInfo.DeviceID = $Hint.connectedSwitchPort.DevId  
+                    $NetworkInfo.PortID = $Hint.connectedSwitchPort.PortId  
+                } else {
+                    ## LLDP
+                    $NetworkInfo.DeviceID = $pnicInfo.LldpInfo.Parameter | where {$_.key -eq "System Name"} | select -ExpandProperty Value 
+                    $NetworkInfo.PortID = $pnicInfo.LldpInfo.PortId
+                }
+
                 $NetworkInfo.DeviceID = $Hint.connectedSwitchPort.DevId  
                 $NetworkInfo.PortID = $Hint.connectedSwitchPort.PortId  
                              
